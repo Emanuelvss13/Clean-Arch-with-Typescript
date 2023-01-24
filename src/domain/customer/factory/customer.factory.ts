@@ -7,8 +7,12 @@ export class CustomerFactory {
     return new Customer(uuid(), name);
   }
 
-  public static createWithAddress(name: string, address: Address): Customer {
-    const customer = new Customer(uuid(), name);
+  public static createWithAddress(
+    name: string,
+    address: Address,
+    id?: string
+  ): Customer {
+    const customer = new Customer(id || uuid(), name);
 
     customer.changeAddress(address);
 
