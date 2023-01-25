@@ -31,8 +31,12 @@ customerRoutes.post("/", async ({ body }: Request, res: Response) => {
   customerRoutes.get("/", async (req: Request, res: Response) => {
     const usecase = new ListCustomersUseCase(new CustomerRepository());
 
-    const output = await usecase.execute();
+    try {
+      const output = await usecase.execute();
 
-    return res.status(200).send(output);
+      res.status(200).send(output);
+    } catch (error) {
+      res.status(500).send(error);
+    }
   });
 });
