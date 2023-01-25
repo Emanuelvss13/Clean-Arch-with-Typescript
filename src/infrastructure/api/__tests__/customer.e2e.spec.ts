@@ -6,7 +6,7 @@ describe("E2E test for customer", () => {
     await sequelize.sync({ force: true });
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await sequelize.close();
   });
 
@@ -34,5 +34,13 @@ describe("E2E test for customer", () => {
         city: "City",
       },
     });
+  });
+
+  it("should not create a customer", async () => {
+    const response = await request(app).post("/customer").send({
+      name: "customer",
+    });
+
+    expect(response.statusCode).toBe(500);
   });
 });

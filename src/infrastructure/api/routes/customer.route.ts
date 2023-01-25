@@ -7,8 +7,6 @@ export const customerRoutes = express.Router();
 customerRoutes.post("/", async ({ body }: Request, res: Response) => {
   const usecase = new CreateCustomerUseCase(new CustomerRepository());
 
-  console.log(body);
-
   try {
     const input = {
       name: body.name,
