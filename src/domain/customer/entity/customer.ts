@@ -1,3 +1,4 @@
+import { Entity } from "../../@shared/entity/entitty.abstract";
 import { Address } from "../value-object/address";
 
 // Foque no cliente, foque no negócio
@@ -26,24 +27,24 @@ import { Address } from "../value-object/address";
 */
 
 // Entidade Focada em negócio
-export class Customer {
+export class Customer extends Entity {
   // Esse id server pra mim identificar esse objeto no meu sistema
-  private _id: string;
   private _name: string;
   private _address!: Address;
   private _active: boolean = false;
   private _rewardPoints: number = 0;
 
   constructor(id: string, name: string) {
-    this._id = id;
+    super();
+    this.id = id;
     this._name = name;
 
     //Estrategia para manter a entidade consitente.
     this.validate();
-  }
 
-  get id(): string {
-    return this._id;
+    if (this.notification.hasErrors()) {
+      throw new Error(this.notification.messages());
+    }
   }
 
   get name(): string {
@@ -60,12 +61,18 @@ export class Customer {
 
   // Uma entidade por padrão sempre tem que se autovalidar.
   validate() {
-    if (this._id.length === 0) {
-      throw new Error("Id is required");
+    if (this.id.length === 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Id is required",
+      });
     }
 
     if (this._name.length === 0) {
-      throw new Error("Name is required");
+      this.notification.addError({
+        context: "customer",
+        message: "Name is required",
+      });
     }
   }
 
