@@ -31,4 +31,8 @@ export class Notification {
 
     return this.errors[context].join(", ");
   }
+
+  hasErrors(): boolean {
+    return Object.keys(this.errors).length !== 0;
+  }
 }

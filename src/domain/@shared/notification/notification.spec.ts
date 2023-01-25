@@ -72,4 +72,19 @@ describe("Notification unit tests", () => {
       "customer: error message, error message2. order: error message2. "
     );
   });
+
+  it("should check if context has errors", () => {
+    const notification = new Notification();
+
+    const error = {
+      message: "error message",
+      context: "customer",
+    };
+
+    expect(notification.hasErrors()).toBe(false);
+
+    notification.addError(error);
+
+    expect(notification.hasErrors()).toBe(true);
+  });
 });
