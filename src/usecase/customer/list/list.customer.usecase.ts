@@ -15,7 +15,7 @@ export class ListCustomersUseCase {
           street: customer.address.street,
           city: customer.address.city,
           number: customer.address.number,
-          zip: customer.address.zipcode,
+          zip: customer.address.zip,
         },
       })),
     };

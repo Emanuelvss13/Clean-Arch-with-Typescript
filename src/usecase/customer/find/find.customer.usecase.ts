@@ -21,7 +21,7 @@ export class FindCustomerUseCase {
         city: customer.address.city,
         number: customer.address.number,
         street: customer.address.street,
-        zip: customer.address.zipcode,
+        zip: customer.address.zip,
       },
     };
   }

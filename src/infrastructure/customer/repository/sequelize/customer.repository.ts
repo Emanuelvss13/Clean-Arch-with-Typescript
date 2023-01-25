@@ -12,7 +12,7 @@ export class CustomerRepository implements ICustomerRepository {
       rewardPoints: entity.rewardPoints,
       street: entity.address.street,
       number: entity.address.number,
-      zipcode: entity.address.zipcode,
+      zip: entity.address.zip,
       city: entity.address.city,
     });
   }
@@ -25,7 +25,7 @@ export class CustomerRepository implements ICustomerRepository {
         rewardPoints: entity.rewardPoints,
         street: entity.address.street,
         number: entity.address.number,
-        zipcode: entity.address.zipcode,
+        zip: entity.address.zip,
         city: entity.address.city,
       },
       {
@@ -53,7 +53,7 @@ export class CustomerRepository implements ICustomerRepository {
     const address = new Address(
       customerModel.street,
       customerModel.number,
-      customerModel.zipcode,
+      customerModel.zip,
       customerModel.city
     );
 
@@ -75,7 +75,7 @@ export class CustomerRepository implements ICustomerRepository {
       const address = new Address(
         customerModel.street,
         customerModel.number,
-        customerModel.zipcode,
+        customerModel.zip,
         customerModel.city
       );
 

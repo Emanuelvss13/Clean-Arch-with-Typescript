@@ -19,7 +19,7 @@ export class Address {
     return this._number;
   }
 
-  get zipcode() {
+  get zip() {
     return this._zip;
   }
 

@@ -24,7 +24,7 @@ const input = {
     street: "street updated",
     number: 123,
     city: "city updated",
-    zipcode: "1111",
+    zip: "1111",
   },
 };
 
@@ -41,7 +41,7 @@ describe("Update customer unit test", () => {
         street: "street updated",
         number: 123,
         city: "city updated",
-        zipcode: "1111",
+        zip: "1111",
       },
     });
   });

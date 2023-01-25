@@ -15,7 +15,7 @@ export class CreateCustomerUseCase {
   }: InputCreateCustomerDTO): Promise<OutputCreateCustomerDTO> {
     const customer = CustomerFactory.createWithAddress(
       name,
-      new Address(address.street, address.number, address.zipcode, address.city)
+      new Address(address.street, address.number, address.zip, address.city)
     );
 
     await this.customerRepository.create(customer);
@@ -26,7 +26,7 @@ export class CreateCustomerUseCase {
       address: {
         street: customer.address.street,
         number: customer.address.number,
-        zipcode: customer.address.zipcode,
+        zip: customer.address.zip,
         city: customer.address.city,
       },
     };

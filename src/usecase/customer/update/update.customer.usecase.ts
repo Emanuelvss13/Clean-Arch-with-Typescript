@@ -16,12 +16,7 @@ export class UpdateCustomerUseCase {
   }: InputUpdateCustomerDTO): Promise<OutputUpdateCustomerDTO> {
     const customer = CustomerFactory.createWithAddress(
       name,
-      new Address(
-        address.street,
-        address.number,
-        address.zipcode,
-        address.city
-      ),
+      new Address(address.street, address.number, address.zip, address.city),
       id
     );
 
@@ -33,7 +28,7 @@ export class UpdateCustomerUseCase {
       address: {
         street: address.street,
         number: address.number,
-        zipcode: address.zipcode,
+        zip: address.zip,
         city: address.city,
       },
     };

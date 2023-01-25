@@ -5,7 +5,7 @@ const input = {
   address: {
     street: "street",
     number: 1,
-    zipcode: "00000000",
+    zip: "00000000",
     city: "city",
   },
 };
@@ -31,7 +31,7 @@ describe("create customer use case unit test", () => {
       address: {
         street: "street",
         number: 1,
-        zipcode: "00000000",
+        zip: "00000000",
         city: "city",
       },
     });

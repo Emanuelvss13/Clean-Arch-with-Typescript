@@ -19,7 +19,7 @@ export class CustomerModel extends Model {
   declare number: number;
 
   @Column({ allowNull: false })
-  declare zipcode: string;
+  declare zip: string;
 
   @Column({ allowNull: false })
   declare city: string;

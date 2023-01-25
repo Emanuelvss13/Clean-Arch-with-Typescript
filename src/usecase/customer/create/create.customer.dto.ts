@@ -3,7 +3,7 @@ export interface InputCreateCustomerDTO {
   address: {
     street: string;
     number: number;
-    zipcode: string;
+    zip: string;
     city: string;
   };
 }
