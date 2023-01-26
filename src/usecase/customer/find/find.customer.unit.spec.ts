@@ -15,6 +15,17 @@ const MockCustomerRespository = () => {
   };
 };
 
+const ErrorMockCustomerRespository = () => {
+  return {
+    find: jest.fn().mockImplementation(() => {
+      throw new Error("Customer not found");
+    }),
+    findAll: jest.fn(),
+    create: jest.fn(),
+    update: jest.fn(),
+  };
+};
+
 describe("Find customer use case", () => {
   it("should find a customer", async () => {
     const usecase = new FindCustomerUseCase(MockCustomerRespository());
@@ -37,12 +48,8 @@ describe("Find customer use case", () => {
     expect(result).toStrictEqual(output);
   });
 
-  it("should not find a customer", () => {
-    MockCustomerRespository().find.mockImplementation(() => {
-      throw new Error("Customer not found");
-    });
-
-    const usecase = new FindCustomerUseCase(MockCustomerRespository());
+  it("should not find a customer", async () => {
+    const usecase = new FindCustomerUseCase(ErrorMockCustomerRespository());
 
     const input = { id: "" };
 

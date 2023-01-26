@@ -37,7 +37,7 @@ export class Customer extends Entity {
 
   constructor(id: string, name: string) {
     super();
-    this.id = id;
+    this._id = id;
     this._name = name;
 
     //Estrategia para manter a entidade consitente.
