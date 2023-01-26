@@ -1,4 +1,5 @@
 import { Entity } from "../../@shared/entity/entitty.abstract";
+import { CustomerValidatorFactory } from "../factory/customer.validator.factory";
 import { Address } from "../value-object/address";
 import { NotificationError } from "./../../@shared/notification/notification.error";
 
@@ -40,12 +41,10 @@ export class Customer extends Entity {
     this._id = id;
     this._name = name;
 
-    //Estrategia para manter a entidade consitente.
+    // Estrategia para manter a entidade consitente.
     this.validate();
 
     if (this.notification.hasErrors()) {
-      console.log(this.notification.messages());
-
       throw new NotificationError(this.notification.messages());
     }
   }
@@ -63,20 +62,9 @@ export class Customer extends Entity {
   }
 
   // Uma entidade por padrão sempre tem que se autovalidar.
+  // Dessa maneira o "acomplamento" está na factory e não no meu dominio.
   validate() {
-    if (this.id.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Id is required",
-      });
-    }
-
-    if (this._name.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Name is required",
-      });
-    }
+    CustomerValidatorFactory.create().validate(this);
   }
 
   get address() {
