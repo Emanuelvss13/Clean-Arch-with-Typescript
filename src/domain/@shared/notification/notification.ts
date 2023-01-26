@@ -1,4 +1,4 @@
-export type NotificationError = {
+export type NotificationErrorProps = {
   context: string;
   message: string;
 };
@@ -6,7 +6,7 @@ export type NotificationError = {
 export class Notification {
   private errors: { [context: string]: string[] } = {};
 
-  addError(error: NotificationError): void {
+  addError(error: NotificationErrorProps): void {
     if (!this.errors[error.context]) {
       this.errors[error.context] = [];
     }

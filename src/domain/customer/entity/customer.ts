@@ -1,5 +1,6 @@
 import { Entity } from "../../@shared/entity/entitty.abstract";
 import { Address } from "../value-object/address";
+import { NotificationError } from "./../../@shared/notification/notification.error";
 
 // Foque no cliente, foque no negócio
 /*
@@ -43,7 +44,9 @@ export class Customer extends Entity {
     this.validate();
 
     if (this.notification.hasErrors()) {
-      throw new Error(this.notification.messages());
+      console.log(this.notification.messages());
+
+      throw new NotificationError(this.notification.messages());
     }
   }
 
