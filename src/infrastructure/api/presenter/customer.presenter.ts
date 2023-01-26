@@ -12,16 +12,18 @@ export default class CustomerPresenter {
 
     return toXML(
       {
-        customers: data.customers.map((customer) => ({
-          id: customer.id,
-          name: customer.name,
-          address: {
-            street: customer.address.street,
-            number: customer.address.number,
-            zip: customer.address.zip,
-            city: customer.address.city,
-          },
-        })),
+        customers: {
+          customer: data.customers.map((customer) => ({
+            id: customer.id,
+            name: customer.name,
+            address: {
+              street: customer.address.street,
+              number: customer.address.number,
+              zip: customer.address.zip,
+              city: customer.address.city,
+            },
+          })),
+        },
       },
       xmlOptions
     );

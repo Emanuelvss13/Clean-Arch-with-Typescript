@@ -83,5 +83,16 @@ describe("E2E test for customer", () => {
       id: expect.any(String),
       ...c2.body,
     });
+
+    const responseXML = await request(app)
+      .get("/customer")
+      .set("Accept", "application/xml");
+
+    expect(responseXML.status).toEqual(200);
+    expect(responseXML.text).toContain(
+      '<?xml version="1.0" encoding="UTF-8"?>'
+    );
+    expect(responseXML.text).toContain(`<customers>`);
+    expect(responseXML.text).toContain(`<customer>`);
   });
 });
